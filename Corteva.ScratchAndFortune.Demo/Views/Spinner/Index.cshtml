@@ -1,0 +1,31 @@
+﻿
+@{
+	ViewData["Title"] = "Cek Keberuntungan";
+}
+<br />
+<h4 class="text-center">Selamat Datang di Corteva</h4>
+<h2 class="text-success text-center">Scratch and Fortune</h2>
+<hr />
+<input type="hidden" id="DecodedQ" value="@ViewBag.DecodedQ" />
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="text-center">
+			<div id="spinnerContainer">
+				<canvas id="spinner" width="320" height="320">
+					Your browser doesn't support canvas
+				</canvas>
+			</div>
+
+			<button id="BtnCheckReward" class="btn btn-primary btn-lg">Spin</button>
+		</div>
+
+	</div>
+</div>
+
+@section Scripts{
+	<script asp-append-version="true" src="~/lib/sweetalert/sweetalert.min.js"></script>
+	<script asp-append-version="true" src="~/lib/javascript-winwheel-2.8.0/Winwheel.min.js"></script>
+	<script asp-append-version="true" src="~/lib/javascript-winwheel-2.8.0/TweenMax.min.js"></script>
+	<script asp-append-version="true" src="~/app/Spinner/index.js"></script>
+}

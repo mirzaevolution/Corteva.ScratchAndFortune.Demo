@@ -1,0 +1,132 @@
+﻿@model Corteva.ScratchAndFortune.Demo.Models.DataProfileViewModel
+
+@{
+	ViewData["Title"] = "Selamat Datang di Corteva";
+}
+<br />
+<h4 class="text-center">Selamat Datang di Corteva</h4>
+<h2 class="text-success text-center">Scratch and Fortune</h2>
+<hr />
+<form id="MainForm" asp-action="Index" autocomplete="off">
+	<div asp-validation-summary="ModelOnly" class="text-danger mb-1"></div>
+
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label asp-for="VoucherCode" class="control-label"></label>
+				<input asp-for="VoucherCode" class="form-control" />
+				<span asp-validation-for="VoucherCode" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="FullName" class="control-label"></label>
+				<input asp-for="FullName" class="form-control" />
+				<span asp-validation-for="FullName" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="IdentityCardNumber" class="control-label"></label>
+				<input asp-for="IdentityCardNumber" class="form-control" />
+				<span asp-validation-for="IdentityCardNumber" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="PhoneNumber" class="control-label"></label>
+				<input asp-for="PhoneNumber" class="form-control" />
+				<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label asp-for="Province" class="control-label"></label>
+				<select asp-for="Province" class="form-control" asp-items="Model.Provinces"></select>
+				<span asp-validation-for="Province" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="City" class="control-label"></label>
+				<select asp-for="City" class="form-control"></select>
+				<span asp-validation-for="City" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Store" class="control-label"></label>
+				<select asp-for="Store" class="form-control"></select>
+				<span asp-validation-for="Store" class="text-danger"></span>
+			</div>
+		</div>
+
+	</div>
+
+	<hr />
+	<div class="row">
+		<div class="col-md-12">
+			<div id="ProductBlock">
+				<div class="form-group product-container">
+					<div class="d-inline-block m-2">
+						<label class="control-label">Produk</label>
+						<select class="form-control productName" style="width:165px">
+							<option value="1">Product 1</option>
+							<option value="2">Product 2</option>
+							<option value="3">Product 3</option>
+							<option value="4">Product 4</option>
+						</select>
+					</div>
+					<div class="d-inline-block m-2">
+						<label class="control-label">Jumlah (Liter/KG)</label>
+						<input type="number" min="0" class="form-control quantity" style="max-width:115px" />
+					</div>
+				</div>
+			</div>
+			<div id="AddProductBlock m-2">
+				<button id="BtnAddProduct" type="button" class="btn btn-success">Tambah Produk</button>
+			</div>
+		</div>
+	</div>
+	<hr />
+	<br />
+	<div class="form-group">
+		<input type="button" id="BtnSubmit" value="Cek Keberuntungamu!" class="btn btn-primary" />
+	</div>
+</form>
+<br />
+<div>
+	<div class="form-group">
+		<div class="custom-control custom-checkbox">
+			<input type="checkbox" class="custom-control-input" id="customCheck1" name="example1">
+			<label class="custom-control-label" for="customCheck1"> Saya setuju dengan <a href="#" data-toggle="modal" data-target="#ModalPrivacy">Kebijakan dan Privasi</a></label>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="custom-control custom-checkbox">
+			<input type="checkbox" class="custom-control-input" id="customCheck2" name="example2">
+			<label class="custom-control-label" for="customCheck2"> Saya ingin menerima informasi produk dan/atau promosi melalui email/fax/sms/mms/telpon/pos</label>
+		</div>
+	</div>
+</div>
+<!-- The Modal -->
+<div class="modal" id="ModalPrivacy">
+	<div class="modal-dialog modal-dialog-scrollable">
+		<div class="modal-content">
+
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h3 class="modal-title text-success">Kebijakan dan Privasi</h3>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				Corteva menganggap penting privasi Anda. Informasi pribadi Anda (nama, e-mail, nomor telepon, dan data kontak lainnya) akan disimpan di sistem pelanggan pilihan yang terutama di-host di Amerika Serikat. Informasi ini akan digunakan oleh Corteva, afiliasi, mitra, dan pihak ketiga tertentu di negara lain untuk memberi Anda informasi produk atau layanan yang diminta. Untuk selengkapnya, kunjungi www.privacy.corteva.com. Dengan memberikan informasi pribadi, berarti Anda menyetujui persyaratan dan ketentuan Pernyataan Privasi ini.
+			</div>
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+@section Scripts {
+
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	<script asp-append-version="true" src="~/app/Profile/index.js"></script>
+
+}
